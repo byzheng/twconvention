@@ -16,8 +16,14 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 4.1.0)
 LazyData: true
-URL: https://twconvention.bangyou.me/, https://github.com/byzheng/twconvention, https://byzheng.github.io/twconvention/
+URL: https://twconvention.bangyou.me/
 BugReports: https://github.com/byzheng/twconvention/issues
 Imports:
-   rtiddlywiki
+    rtiddlywiki,
+    tibble,
+    dplyr,
 RoxygenNote: 7.3.3
+Suggests: 
+    testthat (>= 3.0.0),
+    processx
+Config/testthat/edition: 3

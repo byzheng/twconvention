@@ -5,8 +5,7 @@
 
 
 # twconvention
-![R-CMD-check](https://github.com/byzheng/twconvention/workflows/R-CMD-check/badge.svg)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/twconvention)](https://cran.r-project.org/package=twconvention)
+[![R-CMD-check.yaml](https://github.com/byzheng/twconvention/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/byzheng/twconvention/actions/workflows/R-CMD-check.yaml)
 
 
 'TWConventions' provides utilities for encoding and enforcing conventions and semantic meaning 

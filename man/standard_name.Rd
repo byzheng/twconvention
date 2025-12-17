@@ -2,21 +2,32 @@
 % Please edit documentation in R/names.R
 \name{standard_name}
 \alias{standard_name}
-\title{Get standard names}
+\title{Get Standard Names for Given Names}
 \usage{
-standard_name(names, filter)
+standard_name(names, filter, case_sensitive = FALSE)
 }
 \arguments{
-\item{names}{A character vector for names}
+\item{names}{Character string. The name to find the standard form for.}
 
-\item{group}{Group of standard names}
+\item{filter}{Character string. Filter expression for tiddlers.}
 
-\item{is_apsim_name}{whether to return names only if group is "Variety".}
+\item{case_sensitive}{Logical. Whether the matching should be case sensitive. FALSE by default.}
 }
 \value{
-A vector for standard name if is_apsim_name is FALSE, but a data.frame of
-standard_name and apsim_name if is_apsim_name is TRUE.
+Character string. The standard name (tiddler title) corresponding
+  to the input name, or the original name if no match is found.
 }
 \description{
-Get standard names
+This function retrieves the standard name for a given name by matching against
+TiddlyWiki tiddler titles and their aliases (aka field). The function uses
+filtering to obtain a list of relevant tiddlers and performs matching using
+both the tiddler title and the aka field (which contains a list of alternative
+tiddler titles). When a match is found, the tiddler's title is returned as
+the standard name.
+}
+\examples{
+\dontrun{
+# Assuming you have a tiddlers dataset
+standard_name <- get_standard_name("alternative_name", "[tag[ExampleTag]]")
+}
 }
