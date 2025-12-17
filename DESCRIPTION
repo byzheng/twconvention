@@ -16,8 +16,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 4.1.0)
 LazyData: true
-URL: https://twconvention.bangyou.me/,
-    https://github.com/byzheng/twconvention
+URL: https://twconvention.bangyou.me/, https://github.com/byzheng/twconvention, https://byzheng.github.io/twconvention/
 BugReports: https://github.com/byzheng/twconvention/issues
 Imports:
    rtiddlywiki
