@@ -1,0 +1,24 @@
+Package: twconvention
+Type: Package
+Title: TiddlyWiki Field and Title Conventions Utilities
+Version: 0.0.1
+Authors@R: person(given = "Bangyou",
+                    family = "Zheng",
+                    role = c("aut", "cre"),
+                    email = "zheng.bangyou@gmail.com")
+Description: 'TWConventions' provides utilities for encoding and enforcing conventions and semantic meaning 
+    of TiddlyWiki tiddler titles, fields, and tags. It includes functions to handle canonical 
+    names, alternative names (aka), project-specific inclusion rules, and other structured 
+    assumptions about TiddlyWiki content. The package allows R scripts and projects to reliably 
+    interpret TiddlyWiki data according to standardized conventions without depending on 
+    transport or workflow mechanisms.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 4.1.0)
+LazyData: true
+URL: https://twconvention.bangyou.me/,
+    https://github.com/byzheng/twconvention
+BugReports: https://github.com/byzheng/twconvention/issues
+Imports:
+   rtiddlywiki
+RoxygenNote: 7.3.3
