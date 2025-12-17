@@ -44,6 +44,7 @@ standard_name <- function(names, filter, case_sensitive = FALSE) {
         if(!case_sensitive) {
             aka_titles <- tolower(aka_titles)
         }
+        aka_titles <- unique(aka_titles)
         all_names[[i]] <- tibble::tibble(
             standard_name = tiddlers[[i]]$title,
             aka = aka_titles

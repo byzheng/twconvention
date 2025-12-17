@@ -9,12 +9,15 @@ test_that("tiddler", {
         rtiddlywiki::put_tiddler(id, text="", tags = c("Variety", "test"),
                                 fields = list(aka = id_aka, crop = "Wheat"))
     }
-
+    id <- sprintf("Variety %s", 12)
+    rtiddlywiki::put_tiddler(id, text="", tags = c("Variety"),
+                                fields = list(aka = paste0("[[", id, "]]"), crop = "Wheat"))
     # standard_name
-    names <- paste0("variety", seq(1, 11))
-    filter <- "[[wroing-filter]]"
-    sname <- standard_name(paste0("variety", seq(1, 11)), "Variety")
-    expect_equal(c(paste0("Variety ", seq(1, 10)), NA), sname)
+    names <- c(paste0("variety", seq(1, 11)), "Variety 12")
+    filter <- "[tag[Variety]]"
+    sname <- standard_name(c(paste0("variety", seq(1, 11)), "Variety 12"), "[tag[Variety]]")
+    expect_equal(length(sname), 12)
+    expect_equal(c(paste0("Variety ", seq(1, 10)), NA, "Variety 12"), sname)
 
     # Case sensitive
     names <- c("Variety1", "Variety2", "VARIETY3", "variety4")
