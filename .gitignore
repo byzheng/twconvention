@@ -1,1 +1,16 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rds
+test.R
 docs
+cran-comments.md
+inst/doc
+CRAN-SUBMISSION
+*.json
+*.md
+$__StoryList.tid
+*.tid
+.tw
+sfdkdhfsdahfsahfskafhsodisafsacsdfsajf
