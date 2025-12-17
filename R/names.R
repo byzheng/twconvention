@@ -35,11 +35,12 @@ standard_name <- function(names, filter, case_sensitive = FALSE) {
     i <- 1
     all_names <- list()
     for (i in seq(along = tiddlers)) {
-        if (is.null(tiddlers[[i]]$aka)) {
-            stop("Tiddler missing 'aka' field: ", tiddlers[[i]]$title)
+        aka_titles <- tiddlers[[i]]$title
+        if (!is.null(tiddlers[[i]]$aka)) {
+            aka_i <- rtiddlywiki::split_field(tiddlers[[i]]$aka)
+            aka_titles <- c(aka_titles, aka_i)
         }
-        aka_i <- rtiddlywiki::split_field(tiddlers[[i]]$aka)
-        aka_titles <- c(tiddlers[[i]]$title, aka_i)
+        
         if(!case_sensitive) {
             aka_titles <- tolower(aka_titles)
         }
