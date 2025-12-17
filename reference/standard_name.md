@@ -1,28 +1,43 @@
-# Get standard names
+# Get Standard Names for Given Names
 
-Get standard names
+This function retrieves the standard name for a given name by matching
+against TiddlyWiki tiddler titles and their aliases (aka field). The
+function uses filtering to obtain a list of relevant tiddlers and
+performs matching using both the tiddler title and the aka field (which
+contains a list of alternative tiddler titles). When a match is found,
+the tiddler's title is returned as the standard name.
 
 ## Usage
 
 ``` r
-standard_name(names, filter)
+standard_name(names, filter, case_sensitive = FALSE)
 ```
 
 ## Arguments
 
 - names:
 
-  A character vector for names
+  Character string. The name to find the standard form for.
 
-- group:
+- filter:
 
-  Group of standard names
+  Character string. Filter expression for tiddlers.
 
-- is_apsim_name:
+- case_sensitive:
 
-  whether to return names only if group is "Variety".
+  Logical. Whether the matching should be case sensitive. FALSE by
+  default.
 
 ## Value
 
-A vector for standard name if is_apsim_name is FALSE, but a data.frame
-of standard_name and apsim_name if is_apsim_name is TRUE.
+Character string. The standard name (tiddler title) corresponding to the
+input name, or the original name if no match is found.
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+# Assuming you have a tiddlers dataset
+standard_name <- get_standard_name("alternative_name", "[tag[ExampleTag]]")
+} # }
+```
