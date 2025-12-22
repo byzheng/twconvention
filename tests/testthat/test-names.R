@@ -1,4 +1,4 @@
-test_that("tiddler", {
+test_that("standard_name: normal case", {
     skip_if(!is_test_tw())
 
 
@@ -29,6 +29,29 @@ test_that("tiddler", {
     expect_error(standard_name(NULL, "[tag[Variety]]"))
 
     # Clean tiddlers
+    tiddlers <- rtiddlywiki::get_tiddlers("[tag[Variety]]")
+    for (i in seq(along = tiddlers)) {
+        rtiddlywiki::delete_tiddler(tiddlers[[i]]$title)
+    }
+})
+
+
+test_that("standard_name: duplicate aka", {
+    skip_if(!is_test_tw())
+
+
+    # Inject test data
+    for (i in seq_len(10)) {
+        id <- sprintf("Variety %s", i)
+        id_aka <- sprintf("variety%s", 20)
+        rtiddlywiki::put_tiddler(id, text="", tags = c("Variety", "test"),
+                                fields = list(aka = id_aka, crop = "Wheat"))
+    }
+    
+    # standard_name
+    names <- "variety20"
+    filter <- "[tag[Variety]]"
+    expect_error(sname <- standard_name(names, "[tag[Variety]]"))    # Clean tiddlers
     tiddlers <- rtiddlywiki::get_tiddlers("[tag[Variety]]")
     for (i in seq(along = tiddlers)) {
         rtiddlywiki::delete_tiddler(tiddlers[[i]]$title)

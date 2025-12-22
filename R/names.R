@@ -51,6 +51,22 @@ standard_name <- function(names, filter, case_sensitive = FALSE) {
         )
     }
     all_names <- do.call(rbind, all_names)
+    dup_aka <- all_names |> 
+        dplyr::count(.data$aka) |> 
+        dplyr::filter(.data$n > 1)
+    if (nrow(dup_aka) > 0) {
+        dup_aka <- dup_aka |> 
+            dplyr::select("aka") |> 
+            dplyr::left_join(all_names, by = "aka") |> 
+            dplyr::rename(tiddler = "standard_name") |>
+            dplyr::select("tiddler", "aka") |>
+            as.data.frame()
+        tbl_text <- paste(
+            utils::capture.output(print(dup_aka)),
+            collapse = "\n"
+        )
+        stop("Duplicate aka entries found in tiddlers: \n", tbl_text)
+    }
     input_names <- names
     if(!case_sensitive) {
         input_names <- tolower(input_names)
@@ -58,5 +74,8 @@ standard_name <- function(names, filter, case_sensitive = FALSE) {
     standard_names <- tibble::tibble(input_name = input_names) |>
         dplyr::left_join(all_names, by = c("input_name" = "aka")) |>
         dplyr::pull(standard_name)
+    if (length(standard_names) != length(names)) {
+        stop("Length of output does not match length of input names.")
+    }
     return(standard_names)
 }

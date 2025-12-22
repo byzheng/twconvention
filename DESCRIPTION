@@ -22,6 +22,8 @@ Imports:
     rtiddlywiki,
     tibble,
     dplyr,
+    utils,
+    rlang
 Remotes:
     byzheng/rtiddlywiki
 RoxygenNote: 7.3.3
